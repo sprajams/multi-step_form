@@ -1,4 +1,7 @@
-function Question({ name, input, setInput, nextQ }) {
+import styles from "./styles.module.scss";
+
+function Question({ input, setInput, nextQ, data }) {
+  const { name, type } = data;
   const onChange = (e) => {
     setInput(e.target.value);
   };
@@ -8,18 +11,21 @@ function Question({ name, input, setInput, nextQ }) {
     nextQ();
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.outer}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <label htmlFor="name">{name}:</label>
         <input
-          type="text"
+          type={type}
           id={name}
           name={name}
           onChange={onChange}
           value={input}
           required
+          className={styles.input}
         ></input>
-        <button type="submit">next</button>
+        <button type="submit" className={styles.btnNext}>
+          next
+        </button>
       </form>
     </div>
   );

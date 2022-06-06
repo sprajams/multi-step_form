@@ -7,10 +7,16 @@ function Form({ page }) {
 
   const [input, setInput] = useState("");
   //array of various inputs in the form
-  const arrQ = [`Name`, `Email`, `DOB`, `Password`];
+  const qData = [
+    { name: "Name", type: "text" },
+    { name: "Email", type: "email" },
+    { name: "DOB", type: "date" },
+    { name: "Password", type: "password" },
+  ];
+
   //onClick to move on to the next question
   const nextQ = () => {
-    if (qNum < arrQ.length - 1) {
+    if (qNum < qData.length - 1) {
       setQNum(qNum + 1);
       setReponse((curr) => {
         return [...curr, input];
@@ -35,7 +41,7 @@ function Form({ page }) {
 
       {qNum > 0 ? <button onClick={prevQ}> Back </button> : null}
       <Question
-        name={arrQ[qNum]}
+        data={qData[qNum]}
         setInput={setInput}
         input={input}
         nextQ={nextQ}

@@ -1,0 +1,29 @@
+.outer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 1em;
+}
+.input {
+  width: 300px;
+  margin: 5px 0 10px;
+  padding: 5px;
+  font-size: 1.1em;
+}
+.btnNext {
+  width: 100px;
+  padding: 5px;
+  font-size: 1.1em;
+  border: 1px solid rgb(103, 103, 103);
+  cursor: pointer;
+}
+.btnNext:hover {
+  background-color: rgb(161, 161, 161);
+  transition: 0.3s ease-in-out;
+}
