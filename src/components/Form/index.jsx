@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Question from "../Question";
 
 function Form({ page }) {
@@ -6,13 +6,11 @@ function Form({ page }) {
   const [response, setReponse] = useState([]);
 
   const [input, setInput] = useState("");
-
   //array of various inputs in the form
   const arrQ = [`Name`, `Email`, `DOB`, `Password`];
   //onClick to move on to the next question
   const nextQ = () => {
-    if (qNum < arrQ.length - 1 && input.length > 0) {
-      console.log("next");
+    if (qNum < arrQ.length - 1) {
       setQNum(qNum + 1);
       setReponse((curr) => {
         return [...curr, input];
@@ -20,8 +18,11 @@ function Form({ page }) {
       setInput("");
     }
   };
-  console.log(response, "r");
-  //onClick to go to the prev question
+
+  useEffect(() => {
+    console.log(response, "re");
+  }, [response]);
+
   const prevQ = () => {
     if (qNum > 0) {
       setQNum(qNum - 1);
@@ -33,13 +34,12 @@ function Form({ page }) {
       <div>form</div>
 
       {qNum > 0 ? <button onClick={prevQ}> Back </button> : null}
-      <Question name={arrQ[qNum]} setInput={setInput} input={input} />
-
-      {qNum === arrQ.length - 1 ? (
-        <button>Submit</button>
-      ) : (
-        <button onClick={nextQ}>next</button>
-      )}
+      <Question
+        name={arrQ[qNum]}
+        setInput={setInput}
+        input={input}
+        nextQ={nextQ}
+      />
     </div>
   );
 }
