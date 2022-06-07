@@ -14,22 +14,24 @@ function Question({ input, setInput, nextQ, data, isLast }) {
   return (
     <div className={styles.outer}>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <label htmlFor="name">{name}:</label>
-        <input
-          type={type}
-          id={name}
-          name={name}
-          onChange={onChange}
-          value={input}
-          required
-          className={styles.input}
-        ></input>
+        <div className={styles.innerForm}>
+          <label htmlFor={name}>{name}:</label>
+          <input
+            type={type}
+            id={name}
+            name={name}
+            onChange={onChange}
+            value={input}
+            required
+            className={styles.input}
+          ></input>
+        </div>
         {isLast ? (
-          <button type="submit" className={styles.btnNext}>
+          <button type="submit" className={styles.btn}>
             Submit
           </button>
         ) : (
-          <button type="submit" className={styles.btnNext}>
+          <button type="submit" className={styles.btn}>
             next
           </button>
         )}

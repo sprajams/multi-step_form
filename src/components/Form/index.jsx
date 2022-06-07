@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Question from "../Question";
+import styles from "./styles.module.scss";
 
 function Form({ setDone, setResponse, response }) {
   const [qNum, setQNum] = useState(0);
@@ -44,15 +45,21 @@ function Form({ setDone, setResponse, response }) {
   };
 
   return (
-    <div>
-      {qNum > 0 ? <button onClick={prevQ}> Back </button> : null}
-      <Question
-        data={qData[qNum]}
-        setInput={setInput}
-        input={input}
-        nextQ={nextQ}
-        isLast={qNum === qData.length - 1}
-      />
+    <div className={styles.outer}>
+      {qNum > 0 ? (
+        <button onClick={prevQ} className={styles.btnBack}>
+          👈 Back
+        </button>
+      ) : null}
+      <div className={styles.qWrap}>
+        <Question
+          data={qData[qNum]}
+          setInput={setInput}
+          input={input}
+          nextQ={nextQ}
+          isLast={qNum === qData.length - 1}
+        />
+      </div>
     </div>
   );
 }
