@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Success from "./components/Success";
 import Form from "./components/Form";
 import "./App.css";
 
@@ -10,14 +11,7 @@ function App() {
   return (
     <div className="app">
       {done ? (
-        <div>
-          <div>congrats!</div>
-          <div>details</div>
-          <div>{response.Name}</div>
-          <div>{response.Email}</div>
-          <div>{response.DOB}</div>
-          <div>{response.Password}</div>
-        </div>
+        <Success response={response} />
       ) : (
         <Form setDone={setDone} setResponse={setResponse} response={response} />
       )}

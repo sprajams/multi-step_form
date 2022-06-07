@@ -45,8 +45,6 @@ function Form({ setDone, setResponse, response }) {
 
   return (
     <div>
-      <div>form</div>
-
       {qNum > 0 ? <button onClick={prevQ}> Back </button> : null}
       <Question
         data={qData[qNum]}
