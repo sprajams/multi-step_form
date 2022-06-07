@@ -1,6 +1,6 @@
 import styles from "./styles.module.scss";
 
-function Question({ input, setInput, nextQ, data }) {
+function Question({ input, setInput, nextQ, data, isLast }) {
   const { name, type } = data;
   const onChange = (e) => {
     setInput(e.target.value);
@@ -8,6 +8,7 @@ function Question({ input, setInput, nextQ, data }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(input, "input");
     nextQ();
   };
   return (
@@ -23,9 +24,15 @@ function Question({ input, setInput, nextQ, data }) {
           required
           className={styles.input}
         ></input>
-        <button type="submit" className={styles.btnNext}>
-          next
-        </button>
+        {isLast ? (
+          <button type="submit" className={styles.btnNext}>
+            Submit
+          </button>
+        ) : (
+          <button type="submit" className={styles.btnNext}>
+            next
+          </button>
+        )}
       </form>
     </div>
   );
