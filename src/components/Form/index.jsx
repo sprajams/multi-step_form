@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import Question from "../Question";
 
-function Form({ setDone }) {
+function Form({ setDone, setResponse, response }) {
   const [qNum, setQNum] = useState(0);
-  const [response, setResponse] = useState({});
 
   const [input, setInput] = useState("");
   // array of various input name+type in the form
@@ -26,14 +25,13 @@ function Form({ setDone }) {
     });
     if (qNum < qData.length - 1) {
       setQNum(qNum + 1);
-      // set input to use entered data or empty string if none is available
-      // setInput(response[qData[qNum + 1].name] || "");
     }
     if (qNum === qData.length - 1) {
       setDone(true);
     }
   };
 
+  // set input to use entered data or empty string if none is available
   useEffect(() => {
     setInput(response[qData[qNum].name] || "");
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,8 +40,6 @@ function Form({ setDone }) {
   const prevQ = () => {
     if (qNum > 0) {
       setQNum(qNum - 1);
-
-      // set input to use entered data or empty string if none is available
     }
   };
 
