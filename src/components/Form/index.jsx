@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Question from "../Question";
 
-function Form({ page }) {
+function Form({ setDone }) {
   const [qNum, setQNum] = useState(0);
   const [response, setResponse] = useState({});
 
@@ -16,32 +16,34 @@ function Form({ page }) {
 
   // onClick to move on to the next question and clear input
   const nextQ = () => {
+    setResponse((curr) => {
+      // create a clone of the current object
+      const clone = { ...curr };
+      //a dd in new info
+      clone[qData[qNum].name] = input;
+      // return obj
+      return clone;
+    });
     if (qNum < qData.length - 1) {
       setQNum(qNum + 1);
-      setResponse((curr) => {
-        // create a clone of the current object
-        const clone = { ...curr };
-        //a dd in new info
-        clone[qData[qNum].name] = input;
-        // return obj
-        return clone;
-      });
-
       // set input to use entered data or empty string if none is available
-      setInput(response[qData[qNum + 1].name]);
+      // setInput(response[qData[qNum + 1].name] || "");
+    }
+    if (qNum === qData.length - 1) {
+      setDone(true);
     }
   };
 
   useEffect(() => {
-    console.log(response, "re");
-  }, [response]);
+    setInput(response[qData[qNum].name] || "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [qNum]);
 
   const prevQ = () => {
     if (qNum > 0) {
       setQNum(qNum - 1);
 
       // set input to use entered data or empty string if none is available
-      setInput(response[qData[qNum - 1].name]);
     }
   };
 

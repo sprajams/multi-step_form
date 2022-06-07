@@ -8,9 +8,9 @@ function Question({ input, setInput, nextQ, data, isLast }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(input, "input");
     nextQ();
   };
+
   return (
     <div className={styles.outer}>
       <form onSubmit={handleSubmit} className={styles.form}>
