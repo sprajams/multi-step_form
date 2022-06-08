@@ -1,12 +1,10 @@
 .app {
   text-align: center;
   padding: 20px;
-  border: 1px solid green;
   height: 100%;
-}
-
-@media (min-width: 768px) {
-  .app {
-    padding: 20px 200px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 475px;
+  margin: 0 auto;
 }

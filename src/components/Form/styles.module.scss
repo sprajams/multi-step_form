@@ -1,16 +1,13 @@
 .outer {
+  position: relative;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
   justify-content: center;
-  position: relative;
-  max-width: 500px;
-  margin: 0 auto;
 }
 .btnBack,
 .pageNum {
   color: rgb(84, 24, 24);
-
   position: absolute;
 }
 .btnBack {
@@ -20,14 +17,12 @@
   margin: 20px 0;
   cursor: pointer;
   text-align: left;
-
   font-weight: 500;
-
   top: 10%;
   transform: translate(0, -10%);
 }
 .pageNum {
   bottom: 10%;
   left: 50%;
-  transform: translate(-50%, -10%);
+  transform: translate(-50%, 10%);
 }
