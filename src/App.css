@@ -4,3 +4,9 @@
   border: 1px solid green;
   height: 100%;
 }
+
+@media (min-width: 768px) {
+  .app {
+    padding: 20px 200px;
+  }
+}

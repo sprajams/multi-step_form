@@ -32,7 +32,7 @@ function Question({ input, setInput, nextQ, data, isLast }) {
           </button>
         ) : (
           <button type="submit" className={styles.btn}>
-            next
+            Next
           </button>
         )}
       </form>

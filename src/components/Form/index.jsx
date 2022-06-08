@@ -48,7 +48,7 @@ function Form({ setDone, setResponse, response }) {
     <div className={styles.outer}>
       {qNum > 0 ? (
         <button onClick={prevQ} className={styles.btnBack}>
-          👈 Back
+          ＜ Back
         </button>
       ) : null}
       <div className={styles.qWrap}>
@@ -59,6 +59,10 @@ function Form({ setDone, setResponse, response }) {
           nextQ={nextQ}
           isLast={qNum === qData.length - 1}
         />
+      </div>
+
+      <div className={styles.pageNum}>
+        {qNum + 1} / {qData.length}
       </div>
     </div>
   );
